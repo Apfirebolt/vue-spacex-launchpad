@@ -6,11 +6,12 @@ const state = {
 };
 
 const getters = {
-  [types.GET_ALL_DRAGONS]: () => state.dragons,
+  [types.GET_ALL_DRAGONS]: (state) => state.dragons,
 };
 
 const mutations = {
-  [types.SET_ALL_DRAGONS]: ( payload) => {
+  [types.SET_ALL_DRAGONS]: (state, payload) => {
+    console.log('Setting dragons...', payload)
     state.dragons = payload;
   },
 };
@@ -22,6 +23,7 @@ const actions = {
     const url = 'https://api.spacexdata.com/v3/dragons';
     axios.get(url)
       .then((response) => {
+        console.log('Response ', response.data);
         commit(types.SET_ALL_DRAGONS, response.data);
       })
       .catch((err) => {

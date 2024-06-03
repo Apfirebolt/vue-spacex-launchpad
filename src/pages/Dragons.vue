@@ -4,6 +4,9 @@
     <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
       Dragons
     </h3>
+    <p>
+      {{ allDragons }}
+    </p>
     <t-card v-for="dragon in dragons"
             :key="dragon.id"
             :header="dragon.name"
@@ -39,7 +42,9 @@
 
 <script>
 import axios from 'axios';
+import { mapActions, mapGetters } from 'vuex';
 import LoadingComponent from '../components/common/Loader.vue';
+import * as dragonTypes from '../store/modules/dragon/dragon-types';
 
 export default {
   name: 'DragonPage',
@@ -53,10 +58,20 @@ export default {
       tableHeaders: ['Mission Name', 'Mission ID', 'Wikipedia', 'Manufacturers'],
     };
   },
+  computed: {
+    ...mapGetters({
+      allDragons: dragonTypes.GET_ALL_DRAGONS,
+    }),
+  },
   mounted() {
-    this.getApiData();
+    // this.getApiData();
+    this.allDragonsAction();
+    console.log('All dragons', this.allDragons);
   },
   methods: {
+    ...mapActions({
+      allDragonsAction: dragonTypes.GET_ALL_DRAGONS_ACTION,
+    }),
     async getApiData() {
       this.isLoading = true;
       try {

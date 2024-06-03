@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueTailwind from 'vue-tailwind/dist/full';
 import VueTailwindSettings from './plugins/vue-tailwind';
 import './assets/tailwind.css';
+import store from './store/store';
 import App from './App.vue';
 import router from './router';
 
@@ -24,5 +25,6 @@ Vue.prototype.$loading = {
 
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount('#app');
