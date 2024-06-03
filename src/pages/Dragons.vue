@@ -7,7 +7,7 @@
     <p>
       {{ allDragons }}
     </p>
-    <t-card v-for="dragon in dragons"
+    <t-card v-for="dragon in allDragons"
             :key="dragon.id"
             :header="dragon.name"
             class="my-3 p-3 text-center"
@@ -65,8 +65,8 @@ export default {
   },
   mounted() {
     // this.getApiData();
-    this.allDragonsAction();
-    console.log('All dragons', this.allDragons);
+    // this.allDragonsAction();
+    this.$store.dispatch(dragonTypes.GET_ALL_DRAGONS_ACTION);
   },
   methods: {
     ...mapActions({
