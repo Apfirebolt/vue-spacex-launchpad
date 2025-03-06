@@ -1,9 +1,7 @@
 <template>
   <loading-component v-if="isLoading" />
   <div v-else class="p-4 my-3">
-    <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
-      Payloads
-    </h3>
+    <hero-component :title="title" :content="content" />
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div v-for="payload in payloads" :key="payload.payload_id" class="bg-white p-4 rounded shadow">
       <h4 class="text-lg font-bold text-blue-600">{{ payload.payload_id }}</h4>
@@ -20,17 +18,20 @@
 <script>
 import axios from 'axios';
 import LoadingComponent from '../components/Loader.vue';
+import HeroComponent from '../components/HeroComponent.vue';
 
 export default {
   name: 'PayloadPage',
   components: {
     LoadingComponent,
+    HeroComponent,
   },
   data() {
     return {
       payloads: [],
       isLoading: false,
-      tableHeaders: ['Payload ID', 'Nationality', 'Manufacturer', 'Payload Type', 'Orbit', 'Payload Mass (KG)'],
+      title: "Payloads",
+      content: "List of all the payloads by SpaceX",
     };
   },
   mounted() {

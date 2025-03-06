@@ -1,7 +1,7 @@
 <template>
   <loading-component v-if="isLoading" />
   <div v-else class="p-4 my-3">
-    <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">LAUNCHES</h3>
+    <hero-component :title="title" :content="content" />
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-secondary-300">
       <div
@@ -22,10 +22,14 @@
 
 <script>
 import axios from "axios";
-
+import HeroComponent from "../components/HeroComponent.vue";
+import LoadingComponent from "../components/Loader.vue";
 export default {
   name: "LaunchPage",
-  components: {},
+  components: {
+    HeroComponent,
+    LoadingComponent,
+  },
   data() {
     return {
       launches: [],
@@ -33,6 +37,8 @@ export default {
       filters: {},
       isSearchFilterOpened: false,
       tableHeaders: ["Mission Name", "Launch Year", "Mission Status", "Rocket Name", "Upcoming"],
+      title: "Launches",
+      content: "List of all the launches by SpaceX",
     };
   },
   computed: {

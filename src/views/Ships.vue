@@ -1,7 +1,7 @@
 <template>
   <loading-component v-if="isLoading" />
   <div v-else class="p-4 my-3">
-    <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">Ships</h3>
+    <hero-component :title="title" :content="content" />
     <div class="columns-1 md:columns-3 gap-4">
       <div
       v-for="ship in ships"
@@ -45,11 +45,13 @@
 <script>
 import axios from "axios";
 import LoadingComponent from "../components/Loader.vue";
+import HeroComponent from "../components/HeroComponent.vue";
 
 export default {
   name: "ShipPage",
   components: {
     LoadingComponent,
+    HeroComponent,
   },
   filters: {
     filterRoles(value) {
@@ -64,7 +66,8 @@ export default {
     return {
       ships: [],
       isLoading: false,
-      tableHeaders: ["Mission Name", "Flight Name"],
+      title: "Ships",
+      content: "List of all the ships by SpaceX",
     };
   },
   mounted() {

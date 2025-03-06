@@ -1,9 +1,7 @@
 <template>
   <loading-component v-if="isLoading" />
   <div v-else class="p-4 my-3">
-    <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
-      Capsules
-    </h3>
+    <hero-component :title="title" :content="content" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div v-for="capsule in capsules" :key="capsule.capsule_serial" class="card p-4 border rounded shadow">
@@ -20,11 +18,13 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import LoadingComponent from '../components/Loader.vue';
+import HeroComponent from '../components/HeroComponent.vue';
 
 export default {
   name: 'CapsulePage',
   components: {
     LoadingComponent,
+    HeroComponent,
   },
   filters: {
     filterLaunchDate(value) {
@@ -35,7 +35,8 @@ export default {
     return {
       capsules: [],
       isLoading: false,
-      tableHeaders: ['Capsule ID', 'Status', 'Details', 'Original Launch'],
+      title: 'Capsules',
+      content: 'List of all the capsules by SpaceX',
     };
   },
   mounted() {
