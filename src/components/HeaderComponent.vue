@@ -5,10 +5,7 @@
         <div class="flex items-center w-full justify-between">
           <div class="justify-between flex items-center">
             <img src="../assets/github_white.png" alt="Github Logo" class="h-16 w-32 mr-6 my-2" />
-            <h2 class="text-2xl text-white font-bold">Finder</h2>
-            <button @click="toggleDarkMode" class="ml-4 p-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
-              {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
-            </button>
+            <h2 class="text-2xl text-white font-bold">SpaceX</h2>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
@@ -22,6 +19,9 @@
               >
                 {{ link.name }}
               </router-link>
+              <button @click="toggleDarkMode" class="ml-4 p-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+                {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+              </button>
             </div>
           </div>
         </div>

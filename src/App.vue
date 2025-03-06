@@ -1,7 +1,9 @@
 <template>
-  <div class="text-secondary-100 bg-secondary-300">
+  <div class="bg-secondary-300">
     <HeaderComponent />
-    <router-view />
+    <main class="mt-24">
+      <router-view />
+    </main>
     <FooterComponent />
   </div>
 </template>
