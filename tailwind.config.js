@@ -1,40 +1,25 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const defaultTheme = require('tailwindcss/defaultTheme');
-
-module.exports = {
-  purge: {
-    content: [
-      './public/**/*.html',
-      './src/**/*.vue',
-      './src/plugins/vue-tailwind.js',
-      'node_modules/vue-tailwind/dist/*.js',
-    ],
-  },
-  darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-      screens: {
-        '3xl': '2160px',
-        '4xl': '2880px',
-      },
       colors: {
-        // Theme colors
-        primary: '#3F51B5',
-        secondary: '#ACACAC',
-        black: '#161616',
-        light_blue: '#EAECF7',
-        light: '#F5F5F5',
-        orange: '#FFBF51',
+        //If you want to keep the primary color you had, you can
+        primary: {
+          100: "#5B85AA",
+          200: "#171123",
+          300: "#414770",
+        },
+        //If you want to keep the secondary color you had, you can.
+        secondary: {
+          100: "#4C191B",
+          200: "#963D5A",
+          300: "#ECFFF8",
+        },
+
       },
     },
   },
-  variants: {
-    extend: {
-      opacity: ['disabled'],
-      cursor: ['disabled'],
-    },
-  },
+  plugins: [],
 };

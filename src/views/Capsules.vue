@@ -4,35 +4,15 @@
     <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
       Capsules
     </h3>
-    <t-table v-if="capsules.length"
-             :headers="tableHeaders"
-             :data="capsules"
-             class="bg-white shadow-md"
-    >
-      <template slot="row" slot-scope="props">
-        <tr :class="[props.trClass]">
-          <td :class="props.tdClass">
-            {{ props.row.capsule_id }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.status }}
-          </td>
-          <td :class="props.tdClass" class="cursor-pointer text-blue-500 font-semibold">
-            {{ props.row.details ? props.row.details : 'Not available' }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.original_launch | filterLaunchDate }}
-          </td>
-        </tr>
-      </template>
-    </t-table>
+
+    {{ capsules }}
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import dayjs from 'dayjs';
-import LoadingComponent from '../components/common/Loader.vue';
+import LoadingComponent from '../components/Loader.vue';
 
 export default {
   name: 'CapsulePage',

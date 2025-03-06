@@ -4,50 +4,16 @@
     <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
       LAUNCHES
     </h3>
-    <t-button class="my-2" @click="isSearchFilterOpened = !isSearchFilterOpened">
-      Search Rockets
-    </t-button>
-    <t-table v-if="launches.length"
-             :headers="tableHeaders"
-             :data="rocketResults"
-             class="bg-white shadow-md"
-    >
-      <template slot="row" slot-scope="props">
-        <tr :class="[props.trClass]">
-          <td :class="props.tdClass">
-            {{ props.row.mission_name }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.launch_year }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.launch_success ? 'Success' : 'Failed' }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.rocket.rocket_name ? props.row.rocket.rocket_name : '' }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.upcoming ? 'Yes' : 'No' }}
-          </td>
-        </tr>
-      </template>
-    </t-table>
-    <t-modal v-model="isSearchFilterOpened">
-      <search-filter-modal @filterResults="getFilteredResults" />
-    </t-modal>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import SearchFilterModal from '../components/SearchRocket.vue';
-import LoadingComponent from '../components/common/Loader.vue';
 
 export default {
   name: 'LaunchPage',
   components: {
-    SearchFilterModal,
-    LoadingComponent,
+
   },
   data() {
     return {
