@@ -65,9 +65,20 @@ Screenshot of the Capsules Page which lists all the capsules used by SpaceX.
 
 ![alt text](./screenshots/capsules.png)
 
-## To Do
+## Testing
 
-- Filtering based on dates of mission launched, filter by last month, year.
-- Docker deployment script with nginx 
-- Vuex to be added for managing the store, could be an overkill though for this app though. 
+Testing using Vitest and vue-test-utils for Vue 3.
+
+```
+npm i vitest @#vue/test-utils@next
+npm i happy-dom
+```
+
+Add test script in your package.json file
+
+```
+"test": "vitest"
+```
+
+Happy Dom package would help mimicking the browser environment inside Node.
 
