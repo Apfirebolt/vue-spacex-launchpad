@@ -1,30 +1,11 @@
-import Vue from 'vue';
-import VueTailwind from 'vue-tailwind/dist/full';
-import VueTailwindSettings from './plugins/vue-tailwind';
-import './assets/tailwind.css';
-import store from './store/store';
-import App from './App.vue';
-import router from './router';
+import { createApp } from 'vue'
+import './style.css'
+import router from './routes'
+import App from './App.vue'
 
-Vue.config.productionTip = false;
+// AOS imports
+import 'aos/dist/aos.css'
 
-Vue.use(VueTailwind, VueTailwindSettings);
-Vue.prototype.$toast = {
-  show: (message) => {
-    Vue.prototype.$bus.emit('add_toast', message);
-  },
-};
-Vue.prototype.$loading = {
-  show: () => {
-    Vue.prototype.$bus.emit('show_loading');
-  },
-  hide: () => {
-    Vue.prototype.$bus.emit('hide_loading');
-  },
-};
-
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
+const app = createApp(App)
+app.use(router)
+app.mount('#app');

@@ -4,35 +4,22 @@
     <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">
       Capsules
     </h3>
-    <t-table v-if="capsules.length"
-             :headers="tableHeaders"
-             :data="capsules"
-             class="bg-white shadow-md"
-    >
-      <template slot="row" slot-scope="props">
-        <tr :class="[props.trClass]">
-          <td :class="props.tdClass">
-            {{ props.row.capsule_id }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.status }}
-          </td>
-          <td :class="props.tdClass" class="cursor-pointer text-blue-500 font-semibold">
-            {{ props.row.details ? props.row.details : 'Not available' }}
-          </td>
-          <td :class="props.tdClass">
-            {{ props.row.original_launch | filterLaunchDate }}
-          </td>
-        </tr>
-      </template>
-    </t-table>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div v-for="capsule in capsules" :key="capsule.capsule_serial" class="card p-4 border rounded shadow">
+      <h4 class="text-xl font-bold">{{ capsule.capsule_id }}</h4>
+      <p><strong>Status:</strong> {{ capsule.status }}</p>
+      <p><strong>Details:</strong> {{ capsule.details }}</p>
+      <p><strong>Original Launch:</strong> {{ capsule.original_launch | filterLaunchDate }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import dayjs from 'dayjs';
-import LoadingComponent from '../components/common/Loader.vue';
+import LoadingComponent from '../components/Loader.vue';
 
 export default {
   name: 'CapsulePage',
