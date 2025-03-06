@@ -1,6 +1,6 @@
 <template>
   <loading-component v-if="isLoading" />
-  <div v-else class="p-4 my-3">
+  <div v-else>
     <hero-component :title="title" :content="content" />
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-secondary-300">

@@ -12,6 +12,7 @@
     </div>
 
     <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+      <img class="h-48 w-84" src="../assets/spacex_logo.png" alt="SpaceX Logo" />
       <h1 class="text-5xl font-bold leading-tight mb-4">
         {{ title ? title : 'Welcome to our site' }}
       </h1>

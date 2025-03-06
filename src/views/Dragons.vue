@@ -1,6 +1,6 @@
 <template>
   <loading-component v-if="isLoading" />
-  <div v-else class="p-4 my-3">
+  <div v-else>
     <h3 class="text-blue-500 text-2xl text-center my-3 font-semibold">Dragons</h3>
     <div
       v-for="dragon in dragons"

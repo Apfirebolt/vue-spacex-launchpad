@@ -1,7 +1,7 @@
 <template>
   <div class="bg-secondary-300">
     <HeaderComponent />
-    <main class="mt-24">
+    <main class="mt-16">
       <router-view />
     </main>
     <FooterComponent />

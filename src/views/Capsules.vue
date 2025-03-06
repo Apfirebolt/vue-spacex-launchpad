@@ -1,6 +1,6 @@
 <template>
   <loading-component v-if="isLoading" />
-  <div v-else class="p-4 my-3">
+  <div v-else>
     <hero-component :title="title" :content="content" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -8,7 +8,7 @@
       <h4 class="text-xl font-bold">{{ capsule.capsule_id }}</h4>
       <p><strong>Status:</strong> {{ capsule.status }}</p>
       <p><strong>Details:</strong> {{ capsule.details }}</p>
-      <p><strong>Original Launch:</strong> {{ capsule.original_launch | filterLaunchDate }}</p>
+      <p><strong>Original Launch:</strong> {{ capsule.original_launch }}</p>
       </div>
     </div>
   </div>
@@ -25,11 +25,6 @@ export default {
   components: {
     LoadingComponent,
     HeroComponent,
-  },
-  filters: {
-    filterLaunchDate(value) {
-      return dayjs(value).format('DD/MM/YYYY');
-    },
   },
   data() {
     return {
