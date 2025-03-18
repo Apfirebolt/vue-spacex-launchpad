@@ -10,6 +10,8 @@ This uses open API provided by SpaceX which is related to missions they've launc
 
 Tried to convert the app to Vue 3 using Vite but just came to know that the UI library used in this 'vue-tailwind' is no longer maintained and is not supported for Vue 3. In place of this, Headless UI can be used.
 
+The project is available for demo at https://vue-spacex-launchpad.vercel.app
+
 Made with ❤️ by **[@apfirebolt](https://github.com/Apfirebolt/)**
 ## Features
 
@@ -28,7 +30,7 @@ Simply install node modules for the app and run the serve script.
 
 ```
 npm install
-npm run serve
+npm run dev
 ```
 
 For production, run the build npm command and serve the static files through a production or development server.
