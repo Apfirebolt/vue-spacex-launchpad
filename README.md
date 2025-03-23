@@ -44,28 +44,7 @@ npm start
 
 Please find some of the screenshots of the application. Below is the screenshot of the Home Page.
 
-![alt text](./screenshots/homepage.png)
-
-Screenshot of the search and filter missions page where you can filter SpaceX missions by Type (success/failure), Rocket Name and 
-is it upcoming mission.
-
-![alt text](./screenshots/filter_rockets.png)
-
-Screenshot of the Launch Page which lists all the missions by SpaceX.
-
-![alt text](./screenshots/launch_page.png)
-
-Screenshot of the Ships Page which lists all the ships used by SpaceX.
-
-![alt text](./screenshots/ships.png)
-
-Screenshot of the Dragons Page
-
-![alt text](./screenshots/dragons.png)
-
-Screenshot of the Capsules Page which lists all the capsules used by SpaceX.
-
-![alt text](./screenshots/capsules.png)
+Older screenshots are now removed, new ones would be added soon.
 
 ## Testing
 
