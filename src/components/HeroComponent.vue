@@ -13,11 +13,11 @@
 
     <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
       <img class="h-48 w-84" src="../assets/spacex_logo.png" alt="SpaceX Logo" />
-      <h1 class="text-5xl font-bold leading-tight mb-4">
-        {{ title ? title : 'Welcome to our site' }}
+      <h1 class="text-5xl font-bold leading-tight mb-4 typewriter">
+        {{ displayedTitle }}
       </h1>
-      <p class="text-lg text-gray-300 mb-8">
-        {{ content ? content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }}
+      <p class="text-lg text-gray-300 mb-8 typewriter">
+        {{ displayedContent }}
       </p>
       <a
         href="#"
@@ -40,6 +40,47 @@ export default {
       type: String,
       required: true
     }
+  },
+  data() {
+    return {
+      displayedTitle: '',
+      displayedContent: ''
+    };
+  },
+  mounted() {
+    this.typewriterEffect(this.title, 'displayedTitle', 100);
+    this.typewriterEffect(this.content, 'displayedContent', 50);
+  },
+  methods: {
+    typewriterEffect(text, target, speed) {
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          this[target] += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, speed);
+    }
+  }
+};
+</script>
+
+<style>
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: white;
   }
 }
-</script>
+</style>

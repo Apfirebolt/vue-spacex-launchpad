@@ -6,6 +6,8 @@
 
 ## Project Briefing
 
+![Project Header](./screenshots/1.png)
+
 This uses open API provided by SpaceX which is related to missions they've launched over the years. This displays details related to it through a beautiful user interface and filters provided. This uses Vue-Tailwind UI library in Vue for UI components which are powered by Tailwind CSS.
 
 Tried to convert the app to Vue 3 using Vite but just came to know that the UI library used in this 'vue-tailwind' is no longer maintained and is not supported for Vue 3. In place of this, Headless UI can be used.
@@ -44,7 +46,11 @@ npm start
 
 Please find some of the screenshots of the application. Below is the screenshot of the Home Page.
 
-Older screenshots are now removed, new ones would be added soon.
+![Screenshot 1](./screenshots/1.png)  
+![Screenshot 2](./screenshots/2.png)  
+![Screenshot 3](./screenshots/3.png)  
+![Screenshot 4](./screenshots/4.png)  
+![Screenshot 5](./screenshots/5.png)
 
 ## Testing
 
