@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Custom Font Families */
+  --font-lato: 'Lato', sans-serif;
+  --font-opensans: 'Open Sans', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+
+  /* Set default base font to Lato */
+  --font-sans: var(--font-lato);
+
+  /* Custom Primary Colors */
+  --color-primary-100: #5B85AA;
+  --color-primary-200: #171123;
+  --color-primary-300: #414770;
+
+  /* Custom Secondary Colors */
+  --color-secondary-100: #4C191B;
+  --color-secondary-200: #963D5A;
+  --color-secondary-300: #ECFFF8;
+}
+
+/* Base Element Styling */
+body {
+  font-family: var(--font-lato);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-opensans);
+}
+
+p {
+  font-family: var(--font-roboto);
+}
