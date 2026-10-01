@@ -52,6 +52,10 @@ Please find some of the screenshots of the application. Below is the screenshot 
 ![Screenshot 4](./screenshots/4.png)  
 ![Screenshot 5](./screenshots/5.png)
 
+## Updates
+
+- The API used for this project no longer works and gives 525 TLS error since June 2026.
+
 ## Testing
 
 Testing using Vitest and vue-test-utils for Vue 3.
