@@ -1,5 +1,5 @@
 <template>
-  <!-- Using the named slot for a custom rocket loading message -->
+  <!-- Using the custom named slot '#rocket' -->
   <loading-component v-if="isLoading">
     <template #rocket>
       <p class="text-blue-600 font-semibold">Fetching SpaceX rockets from the API...</p>
@@ -9,46 +9,36 @@
   <div v-else>
     <hero-component :title="title" :content="content" />
 
-    <div class="columns-1 md:columns-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div
         v-for="rocket in rockets"
-        :key="rocket.rocket_id"
-        class="break-inside-avoid rounded overflow-hidden shadow-lg my-4 group bg-white"
+        :key="rocket.name"
+        class="rounded-lg overflow-hidden shadow-lg my-4 bg-white p-6 flex flex-col justify-between"
       >
-        <img
-          v-if="rocket.flickr_images?.length"
-          class="w-full h-48 object-cover"
-          :src="rocket.flickr_images[0]"
-          :alt="rocket.rocket_name"
-        />
-        <p v-else class="text-center text-xl my-2 bg-gray-300 text-gray-500 py-2">No Image Available</p>
-
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{{ rocket.rocket_name }}</div>
-          <div class="text-gray-700 text-base">
-            <strong>Type:</strong> {{ rocket.rocket_type }}<br />
-            <strong>First Flight:</strong> {{ rocket.first_flight }}<br />
-            <strong>Active:</strong> {{ rocket.active ? "Yes" : "No" }}<br />
-
-            <div class="show-more hidden group-hover:block mt-2">
-              <strong>Stages:</strong> {{ rocket.stages }}<br />
-              <strong>Boosters:</strong> {{ rocket.boosters }}<br />
-              <strong>Cost per Launch:</strong> ${{ rocket.cost_per_launch?.toLocaleString() || 'N/A' }}<br />
-              <strong>Success Rate:</strong> {{ rocket.success_rate_pct }}%<br />
-            </div>
+        <div>
+          <!-- Rocket Name & Family Badge -->
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-bold text-2xl text-gray-800">{{ rocket.name }}</h3>
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+              {{ rocket.family }}
+            </span>
           </div>
-        </div>
 
-        <div class="px-6 pt-4 pb-2">
-          <a
-            v-if="rocket.wikipedia"
-            :href="rocket.wikipedia"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-blue-500 my-3 block hover:bg-blue-700 text-center mx-auto w-1/2 text-white font-bold py-2 px-4 rounded"
-          >
-            More Info
-          </a>
+          <!-- Description -->
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            {{ rocket.description }}
+          </p>
+
+          <!-- Specifications List -->
+          <div class="text-gray-700 text-sm space-y-1 border-t pt-3">
+            <p><strong>Maiden Flight:</strong> {{ rocket.maiden_flight }}</p>
+            <p><strong>Reusable:</strong> {{ rocket.reusable ? "Yes" : "No" }}</p>
+            <p><strong>Total Launches:</strong> {{ rocket.launch_count }}</p>
+            <p><strong>Successful Launches:</strong> {{ rocket.successful_launches }}</p>
+            <p><strong>Failed Launches:</strong> {{ rocket.failed_launches }}</p>
+            <p><strong>Success Rate:</strong> {{ rocket.success_rate_pct }}%</p>
+            <p><strong>Launch Cost:</strong> ${{ rocket.launch_cost_usd?.toLocaleString() || 'N/A' }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -81,12 +71,11 @@ export default {
     async getApiData() {
       this.isLoading = true;
       try {
-        const response = await axios.get("https://api.spacexdata.com/v3/rockets");
+        const response = await axios.get("https://gateway.pipeworx.io/spacex/v4/rockets");
         this.rockets = response.data;
       } catch (err) {
         console.error("Error fetching rocket data:", err);
       } finally {
-        // Ensures loading stops regardless of success or failure
         this.isLoading = false;
       }
     },
